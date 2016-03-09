@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Blog.Models;
+using Owin.Security.Providers.LinkedIn;
 
 namespace Blog
 {
@@ -45,6 +46,18 @@ namespace Blog
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
+            app.UseLinkedInAuthentication("7765kbaa4wyyvr", "xNvsWVcl3d4J7Rgw");
+
+            app.UseFacebookAuthentication(
+               appId: "1669834369957213",
+               appSecret: "2942d22d4e78eb00c03e0194f9b90cb6");
+
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "266546176645-ub1irui3hp80stob01djtc58rbqnh745.apps.googleusercontent.com",
+                ClientSecret = "93dTdN1a3A7HaNRwFgG33mGg"
+            });
+
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",
@@ -54,15 +67,6 @@ namespace Blog
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
-
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
         }
     }
 }

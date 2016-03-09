@@ -37,11 +37,6 @@ namespace Blog.Models
 
     public partial class Comment
     {
-        public Comment()
-        {
-            Posts = new HashSet<Post>();
-        }
-
         public int Id { get; set; }
         [Required]
         [AllowHtml]
@@ -57,6 +52,5 @@ namespace Blog.Models
         [StringLength(500)]
         public string CommentUpdateReason { get; set; }
         public string EditorId { get; set; }
-        public virtual ICollection<Post> Posts { get; set; }
     }
 }
