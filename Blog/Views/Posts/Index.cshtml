@@ -52,8 +52,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.PostContent)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MediaUrl)
+        <td>@if (item.MediaUrl != null)
+            {
+            <img class="img-responsive" src="@Url.Content(item.MediaUrl)" />
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Published)

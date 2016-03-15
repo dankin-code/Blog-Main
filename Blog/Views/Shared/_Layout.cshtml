@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Daniel's Blog</title>
+    <link href="https//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -21,9 +22,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li>@Html.ActionLink("Create a Post", "Create", "Posts")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -37,9 +38,16 @@
             <p>&copy; @DateTime.Now.Year - Daniel's Blog</p>
         </footer>
     </div>
-
+    <script src="http://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <!--DataTables CDN-->
+    @Scripts.Render("https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js")
+    <script>
+        //format all tables by class selector
+        $('.table').DataTable();
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

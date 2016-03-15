@@ -1,2 +1,30 @@
 ﻿@model IEnumerable<Blog.Models.Post>
+@{
+    ViewBag.Title = "Blog Posts";
+}
+<h3>Blog Posts</h3>
+<br />
+<br />
 
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@if (item.MediaUrl != null)
+            {
+                <p align ="center"><img class="img-responsive" src="@Url.Content(item.MediaUrl)" /></p>
+            }
+            </td>
+            <td>
+                <br />
+                <h2>@Html.DisplayFor(modelItem => item.PostTitle)</h2>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostContent)<br /><br />
+            </td>
+            <td>
+                <pre>Posted On: @Html.DisplayFor(modelItem => item.PostCreationDate)</pre>
+                <br />
+                <hr />
+            </td>
+        </tr>
+    }
