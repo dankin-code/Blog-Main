@@ -10,6 +10,7 @@ using Blog.Models;
 
 namespace Blog.Controllers
 {
+    [Authorize]
     public class CommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -50,6 +51,9 @@ namespace Blog.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                comment.AuthorId = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name).Id;
+                comment.CommentCreationDate = new DateTimeOffset(DateTime.Now);
                 db.Comments.Add(comment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +86,9 @@ namespace Blog.Controllers
         {
             if (ModelState.IsValid)
             {
+                comment.CommentUpdateDate = new DateTimeOffset(DateTime.Now);
+                comment.EditorId = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name).Id;
+
                 db.Entry(comment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -24,7 +24,15 @@
             <td>
                 <pre>Posted On: @Html.DisplayFor(modelItem => item.PostCreationDate)</pre>
                 <br />
-                <hr />
             </td>
         </tr>
+        @Html.ActionLink("Create a New Comment", "Create", "Comments", null, new { @class = "btn btn-primary"})
+        <br />
+        <hr />
+
+
+
+
+
+
     }

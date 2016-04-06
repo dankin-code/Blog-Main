@@ -53,7 +53,7 @@ namespace Blog.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                
                 post.PostCreationDate = new DateTimeOffset(DateTime.Now);
                 
                 //restricting the valid file formats to images only

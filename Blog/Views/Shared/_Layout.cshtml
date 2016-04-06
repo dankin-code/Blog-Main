@@ -4,44 +4,60 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Daniel's Blog</title>
-    <link href="https//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet" />
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 
+    <link href="~/Content/Theme/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Theme/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Theme/stylish-portfolio.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+
+    <link href="https//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet" />
+    
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Daniel's Blog", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+   
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigatioin</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Daniel's Blog", "Index", "Home", new { area = "" }, new { @class = "navbar-brand page-scroll" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        <li>@Html.ActionLink("Create a Post", "Create", "Posts")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    <li>@Html.ActionLink("Create a Post", "Create", "Posts")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
     </div>
+    
     <div class="container body-content">
+        <br />
+        <br />
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Daniel's Blog</p>
         </footer>
     </div>
+
+
+    <script src="~/Content/Theme/jquery.js"></script>
+    <script src="~/Content/Theme/bootstrap.min.js"></script>
+
     <script src="http://cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+
+
     <!--DataTables CDN-->
     @Scripts.Render("https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js")
     <script>
